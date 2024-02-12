@@ -10,4 +10,17 @@ public class PlayerAnimationTriggers : MonoBehaviour
     {
         player.AnimationTrigger();
     }
+    private void AttackTrigger()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attackCkeck.position, player.attackCkeckRadius);
+        foreach(var hit in colliders)
+        {
+            // neu phat hien co va cham thuc hien tan cong
+            if(hit.GetComponent<Enemy>() != null)
+            {
+                // thuc hien tan cong
+                hit.GetComponent<Enemy>().Damage();
+            }
+        }
+    }
 }

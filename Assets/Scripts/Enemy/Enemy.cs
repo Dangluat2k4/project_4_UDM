@@ -8,7 +8,7 @@ public class Enemy : Entity
     // Move info
     public float moveSpeed;
     public float idleTime;
-
+    public float BattleTime;
     // attack info
     public float attackDistance;
     // thoi gian hoi chieu

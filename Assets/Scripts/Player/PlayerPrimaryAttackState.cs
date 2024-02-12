@@ -35,7 +35,8 @@ public class PlayerPrimaryAttackState : PlayerState
     public override void Exit()
     {
         base.Exit();
-        player.StartCoroutine("BusyFor", 1.5f);
+        // bat lai trang thai sau
+        player.StartCoroutine("BusyFor", .15f);
         comboCounter++; 
         lastTimeAttacked = Time.time;
     }

@@ -9,6 +9,8 @@ public class Entity : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
 
     ///  collision info
+    public Transform attackCkeck;
+    public float attackCkeckRadius;
     [SerializeField] protected Transform groundCheck;
     [SerializeField] protected float groundCheckDistance;
     [SerializeField] protected Transform wallCheck;
@@ -32,6 +34,11 @@ public class Entity : MonoBehaviour
     {
         
     }
+    // tao ham thuc hien 1 cuoc tan cong
+    public virtual void Damage()
+    {
+        Debug.Log(gameObject.name + "was damaged");
+    }
 
 
     // collision
@@ -42,6 +49,8 @@ public class Entity : MonoBehaviour
     {
         Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
         Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
+        // thuc hien tan cong
+        Gizmos.DrawWireSphere(attackCkeck.position, attackCkeckRadius);
     }
 
 

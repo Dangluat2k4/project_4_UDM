@@ -55,7 +55,7 @@ public class Player : Entity
     public float timer;
     public float cooldown = 5;
 
-    */
+    */ 
     // thuc hien ke thua
     protected override void Update() 
     {
