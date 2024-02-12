@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 
-public class PlayerIdleState : PlayerState
+public class PlayerIdleState : PlayerGroundState
 {
     public PlayerIdleState(Player _player, PlayerStateMachine _sStateMachine, string _animBoolName) : base(_player, _sStateMachine, _animBoolName)
     {
@@ -11,6 +12,7 @@ public class PlayerIdleState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.ZeroVelocity();
     }
 
     public override void Exit()
@@ -21,9 +23,13 @@ public class PlayerIdleState : PlayerState
     public override void Update()
     {
         base.Update();
-        if(Input.GetKeyDown(KeyCode.N))
+        if(xInput == player.facingDir && player.IsWallDetected())
         {
-            player.stateMachine.ChangeState(player.moveState);
+            return;
+        }
+        if(xInput !=0 && !player.isBusy)
+        {
+            stateMachine.ChangeState(player.moveState);
         }
     }
 }
